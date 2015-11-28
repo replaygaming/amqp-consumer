@@ -67,8 +67,8 @@ func NewConsumer(amqpURI, exchange, exchangeType, queueName, key,
 
 	if err = c.channel.QueueBind(
 		queue.Name, // name of the queue
-		key,        // bindingKey
-		exchange,   // sourceExchange
+		key,        // routing key (ignored on fanout)
+		exchange,   // name of the exchange
 		false,      // noWait
 		nil,        // arguments
 	); err != nil {
